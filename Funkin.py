@@ -2,7 +2,7 @@ import pygame
 from CalcEngine import Modulo, Floor
 from source.spriteSheet import spriteSheet
 from source.resourcePath import resource_path
-from source import titleState, menuState
+from source import titleState, menuState, StoryMenuState
 
 pygame.init()
 pygame.font.init()
@@ -49,6 +49,11 @@ while running:
                     # "hover over" the story button
                     MainMenuHighlighted = "Story"
 
+                # if the current screen is the main menu and you're hovering on story mode
+                elif currentScreen == "menu" and MainMenuHighlighted == "Story":
+                    # switch to story mode
+                    currentScreen = "story menu"
+
             # if the events key is down
             if event.key == pygame.K_DOWN and currentScreen == "menu":
 
@@ -89,6 +94,11 @@ while running:
     if currentScreen == "menu":
         # display the main menu screen in the current screen and frame
         menuState.Screen(screen, frame, MainMenuHighlighted)
+    # if you're on the main menu screen
+
+    if currentScreen == "story menu":
+        # display the main menu screen in the current screen and frame
+        StoryMenuState.Screen(screen, frame)
 
     # increase the current "frame"
     frame += 0.06
