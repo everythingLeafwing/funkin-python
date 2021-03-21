@@ -105,3 +105,20 @@ class menu:
     OptionsWhite = [mainMenu.parse_sprite("options white0000"), mainMenu.parse_sprite("options white0001"), mainMenu.parse_sprite("options white0002")]
     Story = [mainMenu.parse_sprite("story mode basic0000"), mainMenu.parse_sprite("story mode basic0003"), mainMenu.parse_sprite("story mode basic0006")]
     StoryWhite = [mainMenu.parse_sprite("story mode white0000"), mainMenu.parse_sprite("story mode white0001"), mainMenu.parse_sprite("story mode white0002")]
+
+class storyMenu:
+    class StoryMenuUI:
+        storyMenuUI = spriteSheet("assets\\images\\campaign_menu_UI_assets.png")
+
+        easy, normal, hard = storyMenuUI.parse_sprite("EASY0000"), storyMenuUI.parse_sprite("NORMAL0000"), storyMenuUI.parse_sprite("HARD0000")
+
+        tutorial = [storyMenuUI.parse_sprite("tutorial selected0000"), storyMenuUI.parse_sprite("tutorial selected0001")]
+        week1 = [storyMenuUI.parse_sprite("WEEK1 select0000"), storyMenuUI.parse_sprite("WEEK1 select0001")]
+        week2 = [storyMenuUI.parse_sprite("week2 select0000"), storyMenuUI.parse_sprite("week2 select0001")]
+        week3 = [storyMenuUI.parse_sprite("Week3 select0000"), storyMenuUI.parse_sprite("Week3 select0001")]
+        week4 = [storyMenuUI.parse_sprite("Week4 select0000"), storyMenuUI.parse_sprite("Week4 select0001")]
+        week5 = [storyMenuUI.parse_sprite("week2 select0000"), storyMenuUI.parse_sprite("week2 select0001")]
+        week6 = [storyMenuUI.parse_sprite("week2 select0000"), storyMenuUI.parse_sprite("week2 select0001")]
+
+        arrowLeft = [storyMenuUI.parse_sprite("arrow left0000"), storyMenuUI.parse_sprite("arrow push left0000")]
+        arrowRight = [storyMenuUI.parse_sprite("arrow right0000"), storyMenuUI.parse_sprite("arrow push right0000")]
