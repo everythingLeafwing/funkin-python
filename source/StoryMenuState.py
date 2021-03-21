@@ -9,8 +9,13 @@ def Screen(screen, frame, UIeffector):
 
     weekSpacing = 155
 
-    pygame.draw.rect(screen, (0, 0, 65), (0, 550, 1100, 50))
-    pygame.draw.rect(screen, (0, 0, 65), (1370, 550, 150, 50))
+    screen.blit(storyMenu.StoryMenuUI.easy, (1150, 625))
+
+    pygame.draw.rect(screen, (0, 0, 0), (0, 550, 1100, 500))
+    pygame.draw.rect(screen, (0, 0, 0), (1370, 550, 190, 500))
+
+    screen.blit(storyMenu.StoryMenuUI.arrowLeft[1], (1045, 625))
+    screen.blit(storyMenu.StoryMenuUI.arrowRight[1], (1375, 625))
 
     screen.blit(storyMenu.StoryMenuUI.tutorial[0], (525, 600 + UIeffector))
     screen.blit(storyMenu.StoryMenuUI.week1[0], (525, 600 + UIeffector + (weekSpacing * 1)))
