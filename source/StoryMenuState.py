@@ -4,18 +4,23 @@ from source.images import menuBG, Alphabet, menu, storyMenu
 
 scr = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-def Screen(screen, frame, UIeffector):
+def Screen(screen, frame, UIeffector, difficulty):
     screen.fill((0, 0, 0))
 
     weekSpacing = 155
 
-    screen.blit(storyMenu.StoryMenuUI.easy, (1150, 625))
+    if difficulty == 0:
+        screen.blit(storyMenu.StoryMenuUI.easy, (1135, 625))
+    if difficulty == 1:
+        screen.blit(storyMenu.StoryMenuUI.normal, (1105, 625))
+    if difficulty == 2:
+        screen.blit(storyMenu.StoryMenuUI.hard, (1135, 625))
 
     pygame.draw.rect(screen, (0, 0, 0), (0, 550, 1100, 500))
-    pygame.draw.rect(screen, (0, 0, 0), (1370, 550, 190, 500))
+    pygame.draw.rect(screen, (0, 0, 0), (1435, 550, 190, 500))
 
     screen.blit(storyMenu.StoryMenuUI.arrowLeft[1], (1045, 625))
-    screen.blit(storyMenu.StoryMenuUI.arrowRight[1], (1375, 625))
+    screen.blit(storyMenu.StoryMenuUI.arrowRight[1], (1420, 625))
 
     screen.blit(storyMenu.StoryMenuUI.tutorial[0], (525, 600 + UIeffector))
     screen.blit(storyMenu.StoryMenuUI.week1[0], (525, 600 + UIeffector + (weekSpacing * 1)))

@@ -26,7 +26,9 @@ songPlating = "none"
 
 MainMenuHighlighted = "Story"
 
-storyMenuEffector = 0
+storyMenuEffector = 12
+storyMenuWeek = 0
+StoryMenuDifficulty = 1
 
 # while the game is running
 while running:
@@ -75,23 +77,41 @@ while running:
 
                 # if the current screen is the story menu
                 if currentScreen == "story menu":
-                    storyMenuEffector -= 40
+                    if storyMenuWeek != 6:
+                        storyMenuEffector -= 156
+                        storyMenuWeek += 1
 
             # if the up key is pressed
-            if event.key == pygame.K_UP and currentScreen == "menu":
-                # if the story button is highlighted
-                if MainMenuHighlighted == "Story":
-                    # highlight the donate button
-                    MainMenuHighlighted = "Donate"
-                # if the freeplay buttong is highlighted
-                elif MainMenuHighlighted == "Freeplay":
-                    # highlight the story button
-                    MainMenuHighlighted = "Story"
-                # if the donate button is highlighted
-                elif MainMenuHighlighted == "Donate":
-                    # highlight the freeplay button
-                    MainMenuHighlighted = "Freeplay"
+            if event.key == pygame.K_UP:
+                if currentScreen == "menu":
+                    # if the story button is highlighted
+                    if MainMenuHighlighted == "Story":
+                        # highlight the donate button
+                        MainMenuHighlighted = "Donate"
+                    # if the freeplay buttong is highlighted
+                    elif MainMenuHighlighted == "Freeplay":
+                        # highlight the story button
+                        MainMenuHighlighted = "Story"
+                    # if the donate button is highlighted
+                    elif MainMenuHighlighted == "Donate":
+                        # highlight the freeplay button
+                        MainMenuHighlighted = "Freeplay"
 
+                # if the current screen is the story menu:
+                if storyMenuWeek != 0:
+                    storyMenuEffector += 156
+                    storyMenuWeek -= 1
+
+            if event.key == pygame.K_LEFT:
+                if currentScreen == "story menu" and StoryMenuDifficulty != 0:
+                    StoryMenuDifficulty -= 1
+                elif StoryMenuDifficulty == 0:
+                    StoryMenuDifficulty = 2
+            if event.key == pygame.K_RIGHT:
+                if currentScreen == "story menu" and StoryMenuDifficulty != 2:
+                    StoryMenuDifficulty += 1
+                elif StoryMenuDifficulty == 2:
+                    StoryMenuDifficulty = 0
     # if you're on the title screen
     if currentScreen == "title":
         # display the title screen in the current screen and frame
@@ -105,7 +125,7 @@ while running:
 
     if currentScreen == "story menu":
         # display the main menu screen in the current screen and frame
-        StoryMenuState.Screen(screen, frame, storyMenuEffector)
+        StoryMenuState.Screen(screen, frame, storyMenuEffector, StoryMenuDifficulty)
 
     # increase the current "frame"
     frame += 0.06
