@@ -31,6 +31,4 @@ def Screen(screen, frame, highlighted):
     else:
         screen.blit(menu.Donate[0], (530, 510))
 
-    frame += 0.06
-
     pygame.display.update()
