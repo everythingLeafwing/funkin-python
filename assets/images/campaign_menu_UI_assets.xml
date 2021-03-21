@@ -9,6 +9,7 @@
 	<SubTexture name="WEEK1 select0001" x="370" y="77" width="360" height="89"/>
 	<SubTexture name="Week 3 press0000" x="0" y="176" width="358" height="89"/>
 	<SubTexture name="Week 3 press0001" x="368" y="176" width="358" height="89"/>
+	<SubTexture name="Week 3 press0001" x="368" y="176" width="358" height="89"/>
 	<SubTexture name="Week 4 press0000" x="0" y="275" width="355" height="89"/>
 	<SubTexture name="Week 4 press0001" x="365" y="275" width="355" height="89"/>
 	<SubTexture name="Week 60000" x="0" y="374" width="359" height="92"/>
