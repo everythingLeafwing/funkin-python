@@ -1,8 +1,6 @@
-import pygame
-from CalcEngine import Modulo, Floor
-from source.spriteSheet import spriteSheet
-from source.resourcePath import resource_path
-from source import titleState, menuState, StoryMenuState
+import pygame as pygame
+from assets.source.resourcePath import resource_path
+from assets.source import menuState, StoryMenuState, titleState
 
 pygame.init()
 pygame.font.init()

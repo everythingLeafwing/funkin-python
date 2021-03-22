@@ -1,6 +1,6 @@
 import pygame as pygame
 import xml.dom.minidom as xmldom
-from source.resourcePath import resource_path
+from assets.source.resourcePath import resource_path
 
 
 class spriteSheet:

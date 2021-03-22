@@ -1,6 +1,5 @@
-import pygame
-from source.spriteSheet import spriteSheet
-from source.resourcePath import resource_path
+import pygame as pygame
+from assets.source.spriteSheet import spriteSheet
 
 scr = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 

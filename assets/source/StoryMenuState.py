@@ -1,6 +1,5 @@
-import pygame
-from CalcEngine import Modulo, Floor
-from source.images import menuBG, Alphabet, menu, storyMenu
+import pygame as pygame
+from assets.source.images import storyMenu
 
 scr = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
