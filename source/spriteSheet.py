@@ -15,7 +15,7 @@ class spriteSheet:
 
     def get_sprite(self, x, y, w, h):
         sprite = "";
-        if (self.trans):
+        if self.trans:
             sprite = pygame.Surface((w, h), pygame.SRCALPHA)
         else:
             sprite = pygame.Surface((w, h))
