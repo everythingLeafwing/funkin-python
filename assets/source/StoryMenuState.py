@@ -3,7 +3,7 @@ from assets.source.images import storyMenu
 
 scr = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-def Screen(screen, frame, UIeffector, difficulty):
+def Screen(screen, frame, UIeffector, difficulty, arrowPress):
     screen.fill((0, 0, 0))
 
     weekSpacing = 155
@@ -18,8 +18,16 @@ def Screen(screen, frame, UIeffector, difficulty):
     pygame.draw.rect(screen, (0, 0, 0), (0, 550, 1100, 500))
     pygame.draw.rect(screen, (0, 0, 0), (1435, 550, 190, 500))
 
-    screen.blit(storyMenu.StoryMenuUI.arrowLeft[1], (1045, 625))
-    screen.blit(storyMenu.StoryMenuUI.arrowRight[1], (1420, 625))
+    if arrowPress == "none":
+        screen.blit(storyMenu.StoryMenuUI.arrowLeft[0], (1045, 625))
+        screen.blit(storyMenu.StoryMenuUI.arrowRight[0], (1420, 625))
+
+    if arrowPress == "left":
+        screen.blit(storyMenu.StoryMenuUI.arrowLeft[1], (1045, 625))
+        screen.blit(storyMenu.StoryMenuUI.arrowRight[0], (1420, 625))
+    elif arrowPress == "right":
+        screen.blit(storyMenu.StoryMenuUI.arrowLeft[0], (1045, 625))
+        screen.blit(storyMenu.StoryMenuUI.arrowRight[1], (1420, 625))
 
     screen.blit(storyMenu.StoryMenuUI.tutorial[0], (525, 600 + UIeffector))
     screen.blit(storyMenu.StoryMenuUI.week1[0], (525, 600 + UIeffector + (weekSpacing * 1)))

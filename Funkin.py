@@ -28,6 +28,9 @@ storyMenuEffector = 12
 storyMenuWeek = 0
 StoryMenuDifficulty = 1
 
+StoryMenuPressArrow = "none"
+StoryMenuFramesSincePressArrow = -1
+
 # while the game is running
 while running:
     # for every event in the current events
@@ -54,6 +57,9 @@ while running:
                 # if the current screen is the main menu and you're hovering on story mode
                 elif currentScreen == "menu" and MainMenuHighlighted == "Story":
                     # switch to story mode
+                    pygame.mixer.stop()
+                    pygame.mixer.music.load(resource_path("assets\\music\\Tutorial_Inst.ogg"))
+                    pygame.mixer.music.play()
                     currentScreen = "story menu"
 
             # if the events key is down
@@ -100,16 +106,20 @@ while running:
                     storyMenuEffector += 156
                     storyMenuWeek -= 1
 
-            if event.key == pygame.K_LEFT:
-                if currentScreen == "story menu" and StoryMenuDifficulty != 0:
-                    StoryMenuDifficulty -= 1
-                elif StoryMenuDifficulty == 0:
-                    StoryMenuDifficulty = 2
-            if event.key == pygame.K_RIGHT:
-                if currentScreen == "story menu" and StoryMenuDifficulty != 2:
-                    StoryMenuDifficulty += 1
-                elif StoryMenuDifficulty == 2:
-                    StoryMenuDifficulty = 0
+            if currentScreen == "story menu":
+                StoryMenuFramesSincePressArrow = 0
+                if event.key == pygame.K_LEFT:
+                    StoryMenuPressArrow = "left"
+                    if StoryMenuDifficulty != 0:
+                        StoryMenuDifficulty -= 1
+                    elif StoryMenuDifficulty == 0:
+                        StoryMenuDifficulty = 2
+                if event.key == pygame.K_RIGHT:
+                    StoryMenuPressArrow = "right"
+                    if StoryMenuDifficulty != 2:
+                        StoryMenuDifficulty += 1
+                    elif StoryMenuDifficulty == 2:
+                        StoryMenuDifficulty = 0
     # if you're on the title screen
     if currentScreen == "title":
         # display the title screen in the current screen and frame
@@ -123,7 +133,13 @@ while running:
 
     if currentScreen == "story menu":
         # display the main menu screen in the current screen and frame
-        StoryMenuState.Screen(screen, frame, storyMenuEffector, StoryMenuDifficulty)
+        StoryMenuState.Screen(screen, frame, storyMenuEffector, StoryMenuDifficulty, StoryMenuPressArrow)
+        if StoryMenuFramesSincePressArrow != -1 and StoryMenuFramesSincePressArrow != 35:
+            StoryMenuFramesSincePressArrow += 1
+        elif StoryMenuFramesSincePressArrow == 35:
+            StoryMenuFramesSincePressArrow == -1
+            StoryMenuPressArrow = "none"
+
 
     # increase the current "frame"
     frame += 0.06
