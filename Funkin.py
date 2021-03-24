@@ -34,6 +34,8 @@ class storyMenuData:
         PressArrow = "none"
         FramesSincePressArrow = -1
 
+currentLVLeff = 0
+currentLVLbpm = 0
 # while the game is running
 while running:
     # for every event in the current events
@@ -58,6 +60,9 @@ while running:
                     MainMenuHighlighted = "Story"
                 if currentScreen == "story menu":
                     currentScreen = "tutorial_normal"
+                    pygame.mixer.stop()
+                    pygame.mixer.music.load(resource_path("assets\\music\\Tutorial_Inst.ogg"))
+                    pygame.mixer.music.play()
 
                 # if the current screen is the main menu and you're hovering on story mode
                 elif currentScreen == "menu" and MainMenuHighlighted == "Story":
@@ -147,7 +152,8 @@ while running:
             storyMenuData.Arrow.PressArrow = "none"
 
     if currentScreen == "tutorial_normal":
-        tutorial.Screen(screen)
+        bpm = tutorial.Screen(screen, currentLVLeff)
+        currentLVLeff += (bpm / 45)
 
     # increase the current "frame"
     frame += 0.06

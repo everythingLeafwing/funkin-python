@@ -5,7 +5,7 @@ from assets.source.images import notes
 
 scr = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-def Screen(screen):
+def Screen(screen, eff):
     screen.fill((0, 0, 0))
 
     with open(resource_path("assets\\data\\tutorial\\tutorial.json")) as f:
@@ -21,6 +21,29 @@ def Screen(screen):
     screen.blit(notes.up, (1100, 25))
     screen.blit(notes.right, (1250, 25))
 
-    for key in data
+    for key in data["song"]["notes"]:
+        for keyPos in key["sectionNotes"]:
+            if data["song"]["notes"][1]['mustHitSection']:
+                print("mustHit")
+                if keyPos[1] == 0:
+                    screen.blit(notes.left, (800, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 1:
+                    screen.blit(notes.down, (950, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 2:
+                    screen.blit(notes.up, (1100, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 3:
+                    screen.blit(notes.right, (1250, (keyPos[0] / 2) - eff))
+            else:
+                print("mustntHit")
+                if keyPos[1] == 0:
+                    screen.blit(notes.left, (100, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 1:
+                    screen.blit(notes.down, (250, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 2:
+                    screen.blit(notes.up, (400, (keyPos[0] / 2) - eff))
+                if keyPos[1] == 3:
+                    screen.blit(notes.right, (550, (keyPos[0] / 2) - eff))
 
     pygame.display.update()
+
+    return data['song']['bpm']
