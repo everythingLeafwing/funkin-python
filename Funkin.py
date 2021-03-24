@@ -1,6 +1,7 @@
 import pygame as pygame
 from assets.source.resourcePath import resource_path
 from assets.source import menuState, StoryMenuState, titleState
+from assets.source.levels import tutorial
 
 pygame.init()
 pygame.font.init()
@@ -55,6 +56,8 @@ while running:
                     currentScreen = "menu"
                     # "hover over" the story button
                     MainMenuHighlighted = "Story"
+                if currentScreen == "story menu":
+                    currentScreen = "tutorial_normal"
 
                 # if the current screen is the main menu and you're hovering on story mode
                 elif currentScreen == "menu" and MainMenuHighlighted == "Story":
@@ -143,6 +146,8 @@ while running:
             storyMenuData.Arrow.FramesSincePressArrow == -1
             storyMenuData.Arrow.PressArrow = "none"
 
+    if currentScreen == "tutorial_normal":
+        tutorial.Screen(screen)
 
     # increase the current "frame"
     frame += 0.06

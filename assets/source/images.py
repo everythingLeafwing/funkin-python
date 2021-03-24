@@ -121,3 +121,10 @@ class storyMenu:
 
         arrowLeft = [storyMenuUI.parse_sprite("arrow left0000"), storyMenuUI.parse_sprite("arrow push left0000")]
         arrowRight = [storyMenuUI.parse_sprite("arrow right0000"), storyMenuUI.parse_sprite("arrow push right0000")]
+
+class notes:
+    noteSheet = spriteSheet("assets\\images\\NOTE_assets.png")
+    left = noteSheet.parse_sprite("arrowLEFT0000")
+    down = noteSheet.parse_sprite("arrowDOWN0000")
+    up = noteSheet.parse_sprite("arrowUP0000")
+    right = noteSheet.parse_sprite("arrowRIGHT0000")
