@@ -1,4 +1,5 @@
 import pygame as pygame
+import time
 from assets.source.resourcePath import resource_path
 from assets.source import menuState, StoryMenuState, titleState
 from assets.source.levels import tutorial
@@ -36,8 +37,14 @@ class storyMenuData:
 
 currentLVLeff = 0
 currentLVLbpm = 0
+
+last_time = time.time()
+
 # while the game is running
 while running:
+    deltaTime = time.time() - last_time
+    last_time = time.time()
+
     # for every event in the current events
     for event in pygame.event.get():
 
@@ -45,6 +52,9 @@ while running:
         if event.type == pygame.QUIT:
             # make the game stop running
             running = False
+
+        if event.type == pygame.VIDEORESIZE:
+            screen = pygame.display.set_mode((event.w, event.h), pygame.FULLSCREEN)
 
         # if the event's type was a key being pressed
         if event.type == pygame.KEYDOWN:
